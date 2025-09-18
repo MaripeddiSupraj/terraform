@@ -121,7 +121,7 @@ jobs:
         if: matrix.cloud == 'gcp'
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
       - name: Terraform Init
         run: |
@@ -191,7 +191,7 @@ jobs:
         if: matrix.cloud == 'gcp'
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
       - name: Terraform Init
         run: |
@@ -246,7 +246,7 @@ jobs:
         if: steps.parse.outputs.cloud == 'gcp'
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
       - name: Terraform Init
         run: |
@@ -271,25 +271,6 @@ jobs:
             const fs = require('fs');
             const path = '${{ steps.parse.outputs.cloud }}/environments/${{ steps.parse.outputs.environment }}/output.txt';
             const output = fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : 'No output generated';
-
-            const result = `#### Terraform ${{ steps.parse.outputs.command }} 🚀 \`${{ steps.parse.outputs.cloud }}-${{ steps.parse.outputs.environment }}\`
-
-            <details><summary>Show Output</summary>
-
-            \`\`\`
-            ${output}
-            \`\`\`
-
-            </details>
-
-            *Triggered by: @${{ github.actor }}*`;
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: result
-            }); fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : 'No output generated';
 
             const result = `#### Terraform ${{ steps.parse.outputs.command }} 🚀 \`${{ steps.parse.outputs.cloud }}-${{ steps.parse.outputs.environment }}\`
 
