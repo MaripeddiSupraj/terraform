@@ -12,7 +12,7 @@ terraform {
   }
   backend "gcs" {
     bucket = "calm-vine-465617-j3-tf-state-1758204265"
-    prefix = "gcp/dev"
+    prefix = "gcp/staging"
   }
 }
 
