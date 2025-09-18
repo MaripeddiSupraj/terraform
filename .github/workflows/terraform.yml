@@ -49,9 +49,7 @@ jobs:
           if [[ "${{ steps.changes.outputs.gcp }}" == "true" ]]; then
             matrix=$(echo $matrix | jq '. + [{"cloud": "gcp", "path": "gcp"}]')
           fi
-          echo "matrix<<EOF" >> $GITHUB_OUTPUT
-          echo "$matrix" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
   terraform-check:
     needs: detect-changes
