@@ -87,7 +87,7 @@ jobs:
         run: tfsec ${{ matrix.path }}/ --format json --out tfsec-results.json || true
 
       - name: Upload tfsec results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfsec-results-${{ matrix.cloud }}
           path: tfsec-results.json
