@@ -44,10 +44,10 @@ jobs:
         run: |
           matrix="[]"
           if [[ "${{ steps.changes.outputs.aws }}" == "true" ]]; then
-            matrix=$(echo $matrix | jq '. + [{"cloud": "aws", "path": "aws"}]')
+            matrix=$(echo $matrix | jq -c '. + [{"cloud": "aws", "path": "aws"}]')
           fi
           if [[ "${{ steps.changes.outputs.gcp }}" == "true" ]]; then
-            matrix=$(echo $matrix | jq '. + [{"cloud": "gcp", "path": "gcp"}]')
+            matrix=$(echo $matrix | jq -c '. + [{"cloud": "gcp", "path": "gcp"}]')
           fi
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
