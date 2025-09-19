@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: hello-cronjob
-  namespace: <+infra.namespace>
   labels:
     app: hello-cronjob
     managed-by: harness
